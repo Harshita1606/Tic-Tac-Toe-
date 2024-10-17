@@ -1,4 +1,4 @@
-# Tic-Tac-Toe project by P.S.Harshita,24ME01065.
+# Tic-Tac-Toe project by P.S.Harshita,24ME01065.\n
 This the code for the game of tic-tac-toe in C and is played between 2 players (player1 and player2).The game board is a 2D array. Player1 is assigned the symbol 'X' while Player2 is assigned the symbol 'O'.The game ends when either of the players have achieved three symbols in a row or when the board is full.The winner is determined by checking the rows,columns and diagonals of the game board.
 ##Features
 -Simple command-line interface.
