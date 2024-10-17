@@ -124,11 +124,11 @@ char checkWinner(){
 void printWinner(char winner) { 
  if(winner == PLAYER1){ 
  printf("\n\t  Game Over  \n"); 
- printf(" *** Congratulations, You won!! ***\n"); 
+ printf(" *** Congratulations, Player1 won!! ***\n"); 
  }
  else if(winner == PLAYER2){ 
  printf("\n\t  Game Over  \n"); 
- printf(" *** Sorry, you lost. Better luck next time! ***\n");  
+   printf(" *** Congratulations, Player2 won!! ***\n"); 
  } 
  else { 
  printf("\n\t  Game Over  \n"); 
