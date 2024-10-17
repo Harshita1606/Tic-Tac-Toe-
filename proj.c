@@ -1,15 +1,14 @@
 #include <stdio.h> 
 #include <ctype.h> 
-#include <stdlib.h> 
-#include <time.h> 
+#include <stdlib.h>  
 char board[3][3]; 
-const char PLAYER = 'X'; 
-const char COMPUTER = 'O'; 
+const char PLAYER1 = 'X'; 
+const char PLAYER2 = 'O'; 
 void resetBoard(); 
 void printBoard(); 
 int checkFreeSpaces(); 
-void playerMove(); 
-void computerMove(); 
+void player1Move();
+void player2Move(); 
 char checkWinner(); 
 void printWinner(char); 
 int main(){ 
@@ -23,12 +22,12 @@ int main(){
  while(winner == ' ' && checkFreeSpaces() != 0) 
  { 
  printBoard(); 
- playerMove(); 
+ player1Move(); 
  winner = checkWinner(); 
  if(winner != ' ' || checkFreeSpaces() == 0){ 
  break; 
  } 
- computerMove(); 
+ player2Move(); 
  winner = checkWinner(); 
  if(winner != ' ' || checkFreeSpaces() == 0){ 
  break; 
@@ -61,7 +60,7 @@ int checkFreeSpaces(){
  } 
  return freeSpaces; 
 } 
-void playerMove(){ 
+void player1Move(){ 
  int x; 
  int y; 
  do{ 
@@ -77,22 +76,31 @@ void playerMove(){
  printf("\n"); 
  }  
  else{ 
- board[x][y] = PLAYER; 
+ board[x][y] = PLAYER1; 
  break; 
  } 
  } while(board[x][y] != ' '); 
 } 
-void computerMove(){ 
- srand(time(NULL)); 
+void player2Move(){ 
  int x; 
  int y; 
- if(checkFreeSpaces() > 0){ 
  do{ 
- x = rand() % 3; 
- y = rand() % 3; 
- } while(board[x][y] != ' '); 
- board[x][y] = COMPUTER; 
+ printf("Enter row #(1-3): "); 
+ scanf("%d", &x); 
+ x--; 
+ printf("Enter column #(1-3): "); 
+ scanf("%d", &y); 
+ y--; 
+ printf("\n"); 
+ if(board[x][y] !=' '){ 
+ printf("Invalid move! Try again!\n"); 
+ printf("\n"); 
+ }  
+ else{ 
+ board[x][y] = PLAYER2; 
+ break; 
  } 
+ } while(board[x][y] != ' '); 
 } 
 char checkWinner(){ 
  //check rows 
@@ -114,11 +122,11 @@ char checkWinner(){
  return ' '; 
 } 
 void printWinner(char winner) { 
- if(winner == PLAYER){ 
+ if(winner == PLAYER1){ 
  printf("\n\t  Game Over  \n"); 
  printf(" *** Congratulations, You won!! ***\n"); 
  }
- else if(winner == COMPUTER){ 
+ else if(winner == PLAYER2){ 
  printf("\n\t  Game Over  \n"); 
  printf(" *** Sorry, you lost. Better luck next time! ***\n");  
  } 
