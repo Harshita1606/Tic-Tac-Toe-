@@ -10,7 +10,9 @@ void player1Move();
 void player2Move(); 
 char checkWinner(); 
 void printWinner(char); 
-int main(){  
+int main(){
+int flag=0;
+do{ 
  printf(" The game of Tic Tac Toe \n");  
  printf("Insturctions of the game \n");
  printf("\tPlayer 1 sign = X\n"); 
@@ -35,8 +37,12 @@ int main(){
  } 
  } 
  printBoard(); 
- printWinner(winner); 
- return 0; 
+ printWinner(winner);
+ printf("Do you want to play the game again(0=yes,1=no)?");
+ printf("\n");
+ scanf("%d",&flag); 
+}while(flag==0);
+return 0;
 } 
 void resetBoard(){ 
  for(int i = 0; i < 3; i++){ 
@@ -64,44 +70,60 @@ int checkFreeSpaces(){
 void player1Move(){ 
  int x; 
  int y; 
- do{ 
+ int l=0;
+ do{    
  printf("Enter row #(1-3): "); 
  scanf("%d", &x); 
  x--; 
  printf("Enter column #(1-3): "); 
  scanf("%d", &y); 
- y--; 
+ y--;
+ if((x>=0 && x<3) && (y>=0 && y<3)){
  printf("\n"); 
  if(board[x][y] !=' '){ 
- printf("Invalid move! Try again!\n"); 
+ printf("Invalid move! Try again!\n");
+ l=1; 
  printf("\n"); 
  }  
  else{ 
  board[x][y] = PLAYER1; 
  break; 
+ }
+ }
+ else { 
+    printf("Invalid value of row and/or column\n");
+    l=1;
  } 
- } while(board[x][y] != ' '); 
+ } while(l==1); 
 } 
 void player2Move(){ 
  int x; 
  int y; 
- do{ 
+ int l=0;
+ do{    
  printf("Enter row #(1-3): "); 
  scanf("%d", &x); 
  x--; 
  printf("Enter column #(1-3): "); 
  scanf("%d", &y); 
- y--; 
+ y--;
+ if((x>=0 && x<3) && (y>=0 && y<3)){
  printf("\n"); 
  if(board[x][y] !=' '){ 
- printf("Invalid move! Try again!\n"); 
+ printf("Invalid move! Try again!\n");
+ l=1; 
  printf("\n"); 
  }  
  else{ 
  board[x][y] = PLAYER2; 
  break; 
+ }
+ }
+ else { 
+    printf("Invalid value of row and/or column\n");
+    l=1;
  } 
- } while(board[x][y] != ' '); 
+ } while(l==1); 
 } 
 char checkWinner(){ 
  //check rows 
