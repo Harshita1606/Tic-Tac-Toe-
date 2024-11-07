@@ -1,5 +1,4 @@
-#include <stdio.h> 
-#include <ctype.h> 
+#include <stdio.h>  
 #include <stdlib.h>  
 char board[3][3]; 
 const char PLAYER1 = 'X'; 
@@ -11,8 +10,7 @@ void player1Move();
 void player2Move(); 
 char checkWinner(); 
 void printWinner(char); 
-int main(){ 
- printf("\n\n"); 
+int main(){  
  printf(" The game of Tic Tac Toe \n");  
  printf("Insturctions of the game \n");
  printf("\tPlayer 1 sign = X\n"); 
@@ -22,11 +20,14 @@ int main(){
  while(winner == ' ' && checkFreeSpaces() != 0) 
  { 
  printBoard(); 
+ printf("Player1 turn\n");
  player1Move(); 
+ printBoard();
  winner = checkWinner(); 
  if(winner != ' ' || checkFreeSpaces() == 0){ 
  break; 
  } 
+ printf("Player2 turn\n");
  player2Move(); 
  winner = checkWinner(); 
  if(winner != ' ' || checkFreeSpaces() == 0){ 
@@ -124,11 +125,11 @@ char checkWinner(){
 void printWinner(char winner) { 
  if(winner == PLAYER1){ 
  printf("\n\t  Game Over  \n"); 
- printf(" *** Congratulations, Player1 won!! ***\n"); 
+ printf(" *** Congratulations, PLAYER1 won!! ***\n"); 
  }
  else if(winner == PLAYER2){ 
  printf("\n\t  Game Over  \n"); 
-   printf(" *** Congratulations, Player2 won!! ***\n"); 
+  printf(" *** Congratulations, PLAYER2 won!! ***\n");   
  } 
  else { 
  printf("\n\t  Game Over  \n"); 
